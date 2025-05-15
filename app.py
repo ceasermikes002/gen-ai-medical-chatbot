@@ -126,7 +126,8 @@ if GOOGLE_API_KEY:
             model="gemini-2.0-flash",
             temperature=0.6,
             max_output_tokens=500,
-            google_api_key=GOOGLE_API_KEY
+            google_api_key=GOOGLE_API_KEY,
+            timeout=40  # Increased timeout to prevent worker hanging
         )
         logger.info("Successfully initialized Google Generative AI")
     except Exception as e:

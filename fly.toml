@@ -25,5 +25,7 @@ primary_region = 'jnb'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+  swap_size_mb = 512  # Add swap to help with memory pressure
+
 
 

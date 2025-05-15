@@ -18,5 +18,7 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Run with Gunicorn - use PORT environment variable
-CMD gunicorn --workers=2 --bind 0.0.0.0:$PORT app:app
+# Added timeout and max-requests settings to prevent worker issues
+CMD gunicorn --workers=2 --bind 0.0.0.0:$PORT --timeout=30 --max-requests=1000 --max-requests-jitter=50 app:app
+
 
