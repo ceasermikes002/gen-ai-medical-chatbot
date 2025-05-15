@@ -101,3 +101,14 @@ document.addEventListener('DOMContentLoaded', function() {
     messageInput.focus();
 });
 
+// Add a function to keep the server alive
+function keepAlive() {
+    fetch('/health')
+        .then(response => response.json())
+        .catch(error => console.log('Health check error:', error));
+}
+
+// Call the keepAlive function every 30 seconds when the page is open
+setInterval(keepAlive, 30000);
+
+
