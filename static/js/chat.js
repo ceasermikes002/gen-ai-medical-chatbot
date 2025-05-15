@@ -100,3 +100,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Focus the input field when the page loads
     messageInput.focus();
 });
+

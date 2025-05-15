@@ -1,3 +1,4 @@
+# Core dependencies
 sentence-transformers==2.4.0
 langchain
 flask
@@ -8,4 +9,30 @@ langchain-pinecone
 langchain_community
 langchain_openai
 langchain_experimental
--e .
+langchain_google_genai
+
+# Web server
+gunicorn
+flask-cors
+
+# Performance and scaling
+flask-caching
+redis
+flask-limiter
+
+# Monitoring and logging
+prometheus-flask-exporter
+python-json-logger
+
+# Security
+pyjwt
+bcrypt
+
+# Testing
+pytest
+pytest-cov
+
+# Development tools
+black
+isort
+flake8

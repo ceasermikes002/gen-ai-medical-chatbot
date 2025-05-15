@@ -2,7 +2,7 @@ from src.helper import load_pdf_file, text_split, download_embeddings
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
-from dotenv import load_dotenv
+from dotenv import load
 import os
 
 load_dotenv()
