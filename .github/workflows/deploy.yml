@@ -1,3 +1,0 @@
-# This file is being removed as we're using fly-deploy.yml for deployment to Fly.io
-# If you need to deploy to a custom server in the future, you can restore this file.
-
