@@ -2,9 +2,10 @@ name: Deploy MedikBot
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]  # Added master branch
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]  # Added master branch
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   test:
@@ -24,7 +25,7 @@ jobs:
 
   build-and-push:
     needs: test
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -43,7 +44,7 @@ jobs:
 
   deploy:
     needs: build-and-push
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to production
