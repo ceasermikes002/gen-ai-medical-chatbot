@@ -8,7 +8,7 @@ setup(
     packages = find_packages(),
     license = "MIT",
     install_requires = [
-        "sentence-transformers==2.2.2",
+        "sentence-transformers==2.4.0",
         "langchain",
         "flask",
         "pypdf",
