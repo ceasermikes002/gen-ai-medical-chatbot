@@ -120,12 +120,21 @@ else:
     logger.error("Cannot connect to Pinecone: API key is missing")
 
 # Initialize LLM
-llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
-    temperature=0.6,
-    max_output_tokens=500,
-    google_api_key=GOOGLE_API_KEY
-)
+if GOOGLE_API_KEY:
+    try:
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-2.0-flash",
+            temperature=0.6,
+            max_output_tokens=500,
+            google_api_key=GOOGLE_API_KEY
+        )
+        logger.info("Successfully initialized Google Generative AI")
+    except Exception as e:
+        logger.error(f"Error initializing Google Generative AI: {str(e)}")
+        llm = None
+else:
+    logger.error("Cannot initialize Google Generative AI: API key is missing")
+    llm = None
 
 # Set up prompt templates for A/B testing
 prompt_templates = {
