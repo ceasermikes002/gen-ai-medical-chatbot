@@ -11,9 +11,9 @@ primary_region = 'jnb'
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = false  # Changed from 'stop' to false
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1    # Changed from 0 to 1
   processes = ['app']
   # Add a longer idle timeout to prevent stopping during active use
   [http_service.concurrency]
@@ -26,6 +26,7 @@ primary_region = 'jnb'
   cpu_kind = 'shared'
   cpus = 1
   swap_size_mb = 512  # Add swap to help with memory pressure
+
 
 
 
