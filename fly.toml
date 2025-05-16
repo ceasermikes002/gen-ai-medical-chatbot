@@ -22,13 +22,14 @@ primary_region = 'jnb'
     soft_limit = 500
 
   [[http_service.checks]]
-    interval = '15s'
-    timeout = '10s'
-    grace_period = '30s'
-    method = 'get'
-    path = '/health'
+    interval = "15s"
+    timeout = "10s"
+    grace_period = "30s"
+    method = "get"
+    path = "/health"
 
 [[vm]]
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+

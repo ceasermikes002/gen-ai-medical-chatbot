@@ -263,6 +263,8 @@ def feedback():
 @app.route('/health')
 def health_check():
     """Health check endpoint for monitoring"""
+    # Simple health check that always returns healthy
+    # This ensures the app passes health checks even during startup
     return jsonify({'status': 'healthy'})
 
 if __name__ == '__main__':
