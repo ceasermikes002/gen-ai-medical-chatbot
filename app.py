@@ -32,7 +32,8 @@ app = Flask(__name__)
 # Set up caching
 cache_config = {
     "CACHE_TYPE": "SimpleCache",  # Use Redis in production
-    "CACHE_DEFAULT_TIMEOUT": 300
+    "CACHE_DEFAULT_TIMEOUT": 300,
+    "CACHE_THRESHOLD": 500  # Limit cache size to prevent memory issues
 }
 cache = Cache(app, config=cache_config)
 
@@ -119,15 +120,15 @@ if PINECONE_API_KEY:
 else:
     logger.error("Cannot connect to Pinecone: API key is missing")
 
-# Initialize LLM
+# Initialize LLM with memory-friendly settings
 if GOOGLE_API_KEY:
     try:
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-2.0-flash",  # Using flash model which is more efficient
             temperature=0.6,
-            max_output_tokens=500,
+            max_output_tokens=300,  # Reduced from 500 to save memory
             google_api_key=GOOGLE_API_KEY,
-            timeout=40  # Increased timeout to prevent worker hanging
+            timeout=30
         )
         logger.info("Successfully initialized Google Generative AI")
     except Exception as e:
